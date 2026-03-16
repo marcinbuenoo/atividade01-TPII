@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GarageFlow - Leads & Negociação</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;600;700&family=Fraunces:opsz,wght@9..144,600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="hero">
+        <div class="hero-copy">
+          <p class="badge">Revenda Inteligente</p>
+          <h1>GarageFlow</h1>
+          <p class="subtitle">
+            Centralize leads, acompanhe estágios e feche negociações com ritmo e
+            clareza.
+          </p>
+          <div class="hero-actions">
+            <button class="ghost" id="refreshButton">Atualizar lista</button>
+            <span class="status" id="apiStatus">Conectando...</span>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-inner">
+            <p class="label">Pipeline ativo</p>
+            <h2 id="leadCount">0 leads</h2>
+            <div class="meter">
+              <span id="progressBar"></span>
+            </div>
+            <p class="hint">Contatos em negociação no momento</p>
+          </div>
+        </div>
+      </header>
+
+      <main class="grid">
+        <section class="panel">
+          <h3>Nova lead</h3>
+          <form id="leadForm">
+            <label>
+              Nome do cliente
+              <input type="text" name="name" placeholder="Ex.: Ana Paula" required />
+            </label>
+            <label>
+              Telefone
+              <input type="text" name="phone" placeholder="(11) 99999-8888" required />
+            </label>
+            <label>
+              Canal de origem
+              <select name="origin" required>
+                <option value="visita presencial">Visita presencial</option>
+                <option value="telefone">Telefone</option>
+                <option value="WhatsApp">WhatsApp</option>
+                <option value="Instagram">Instagram</option>
+              </select>
+            </label>
+            <label>
+              Veículo de interesse
+              <input type="text" name="vehicle" placeholder="Ex.: Civic 2021" required />
+            </label>
+            <button type="submit">Cadastrar lead</button>
+            <p class="form-message" id="formMessage"></p>
+          </form>
+        </section>
+
+        <section class="panel wide">
+          <div class="panel-header">
+            <h3>Leads cadastradas</h3>
+            <div class="filters">
+              <input id="searchInput" type="text" placeholder="Buscar por nome ou veículo" />
+              <select id="statusFilter">
+                <option value="all">Todos os status</option>
+                <option value="Aberto">Aberto</option>
+                <option value="Em negociacao">Em negociação</option>
+                <option value="Finalizado com venda">Finalizado com venda</option>
+                <option value="Finalizado sem venda">Finalizado sem venda</option>
+              </select>
+            </div>
+          </div>
+          <div class="lead-list" id="leadList"></div>
+        </section>
+
+        <section class="panel">
+          <h3>Detalhes & evolução</h3>
+          <div class="lead-detail" id="leadDetail">
+            <p class="muted">Selecione uma lead para visualizar.</p>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <template id="leadCardTemplate">
+      <article class="lead-card">
+        <div>
+          <h4 class="lead-name"></h4>
+          <p class="lead-meta"></p>
+        </div>
+        <div class="lead-tags">
+          <span class="tag stage"></span>
+          <span class="tag status"></span>
+        </div>
+        <button class="ghost small">Ver detalhes</button>
+      </article>
+    </template>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
+
