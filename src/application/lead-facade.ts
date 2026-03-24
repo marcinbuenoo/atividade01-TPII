@@ -23,6 +23,7 @@ export class AppError extends Error {
   }
 }
 
+// Facade: simplifica o uso do dominio com uma API unica
 export class LeadFacade {
   constructor(private repository: LeadRepository) {}
 

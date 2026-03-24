@@ -1,12 +1,14 @@
 import { LeadFinalizeOutcome, LeadStageName } from "../types";
 import { Lead } from "../lead";
 
+// State: define comportamento por etapa do lead
 export interface StageState {
   name: LeadStageName;
   advance(lead: Lead): void;
   finalize(lead: Lead, outcome: LeadFinalizeOutcome): void;
 }
 
+// State: Cria o estado a partir do nome salvo
 export function stageStateFromName(name: LeadStageName): StageState {
   switch (name) {
     case "Contato inicial":

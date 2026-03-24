@@ -9,6 +9,7 @@ export interface Observer<T> {
   update(event: T): void;
 }
 
+// Observer: Subject gerencia inscritos e notifica eventos
 export class Subject<T> {
   private observers: Observer<T>[] = [];
 

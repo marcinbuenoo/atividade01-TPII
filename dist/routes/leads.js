@@ -1,0 +1,16 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.leadRoutes = void 0;
+const express_1 = require("express");
+const lead_controller_1 = require("./lead-controller");
+const lead_facade_1 = require("../application/lead-facade");
+const lead_repository_1 = require("../infra/lead-repository");
+const repository = new lead_repository_1.LeadRepository();
+const facade = new lead_facade_1.LeadFacade(repository);
+const controller = new lead_controller_1.LeadController(facade);
+exports.leadRoutes = (0, express_1.Router)();
+exports.leadRoutes.post("/leads", controller.create);
+exports.leadRoutes.get("/leads", controller.list);
+exports.leadRoutes.get("/leads/:id", controller.getById);
+exports.leadRoutes.patch("/leads/:id/advance", controller.advance);
+exports.leadRoutes.patch("/leads/:id/finalize", controller.finalize);

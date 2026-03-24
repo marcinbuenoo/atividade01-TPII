@@ -2,6 +2,7 @@ import { Lead } from "../domain/lead";
 import { LeadOriginFactory } from "../domain/factory/lead-origin-factory";
 import { LeadModel, LeadDocument } from "./mongo/lead-model";
 
+// Repository: centraliza acesso ao banco para Lead
 export class LeadRepository {
   async save(lead: Lead): Promise<void> {
     const snapshot = lead.toSnapshot();

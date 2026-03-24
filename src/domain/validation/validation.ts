@@ -8,6 +8,7 @@ export interface ValidationPayload {
   outcome?: string;
 }
 
+// Chain of Responsibility: encadeia validacoes
 export abstract class ValidationHandler {
   private next: ValidationHandler | null = null;
 

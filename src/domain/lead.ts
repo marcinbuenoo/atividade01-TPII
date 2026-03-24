@@ -18,6 +18,7 @@ import {
 export class Lead {
   private stageState: StageState;
   private status: LeadStatusName;
+  // Observer: subject notifica mudancas de lead
   private subject = new Subject<LeadEvent>();
   private history: LeadEvent[] = [];
 

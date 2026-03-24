@@ -33,6 +33,7 @@ class InstagramOrigin implements OriginChannel {
   }
 }
 
+// Factory: cria o canal de origem correto
 export class LeadOriginFactory {
   static create(origin: LeadOriginName): OriginChannel {
     switch (origin) {
